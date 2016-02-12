@@ -31,7 +31,7 @@ class EventServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register any application services.
+     * Registers the eventy singleton
      *
      * @return void
      */

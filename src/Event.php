@@ -19,7 +19,17 @@ abstract class Event {
 	 */
 	public function listen($hook, $callback, $priority = 20, $arguments = 1)
 	{
-		$this->listeners[$priority][$hook] = compact('callback', 'arguments');
+		$i = 0;
+		$uniquePriority = $priority;
+		do
+		{
+			if( isset( $this->listeners[$uniquePriority][$hook] ) )
+			{
+				$i += 0.1;
+				$uniquePriority = $priority + $i;
+			}	
+		} while( isset( $this->listeners[$uniquePriority][$hook] ) );
+		$this->listeners[$uniquePriority][$hook] = compact('callback', 'arguments');
 	}
 
 	/**

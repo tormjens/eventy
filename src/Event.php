@@ -27,7 +27,7 @@ abstract class Event {
 			{
 				$i += 0.1;
 				$uniquePriority = $priority + $i;
-			}	
+			}
 		} while( isset( $this->listeners[$uniquePriority][$hook] ) );
 		$this->listeners[$uniquePriority][$hook] = compact('callback', 'arguments');
 	}
@@ -53,16 +53,13 @@ abstract class Event {
 	 */
 	protected function getFunction($callback)
 	{
-		if(is_string($callback)) {
-			if(strpos($callback, '@')) {
-				$callback = explode('@', $callback);
-				return array(app('\\'. $callback[0]), $callback[1]);
-			}
-			else {
-				return $callback;
-			}
-		} else if($callback instanceof \Closure) {
+		if (is_string($callback) && strpos($callback, '@')) {
+			$callback = explode('@', $callback);
+			return array(app('\\' . $callback[0]), $callback[1]);
+		} else if (is_callable($callback)) {
 			return $callback;
+		} else {
+			throw new Exception('$callback is not a Callable', 1);
 		}
 	}
 

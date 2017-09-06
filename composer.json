@@ -17,5 +17,15 @@
         "psr-4": {
             "TorMorten\\Eventy\\": "src/"
         }
-    }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TorMorten\\Eventy\\EventServiceProvider"
+            ],
+            "aliases": {
+                "Eventy": "TorMorten\\Eventy\\Facades\\Events"
+            }
+        }
+    },
 }

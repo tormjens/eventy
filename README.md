@@ -18,6 +18,8 @@ Filters are made to modify entities. They always return some kind of value. By d
 composer require tormjens/eventy
 ```
 
+If you're using Laravel 5.5 you can start using the package at this point. Eventy is auto-discovered by the Laravel framework.
+
 2. Add the service provider to the providers array in your `config/app.php`.
 
 ```php

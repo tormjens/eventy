@@ -45,7 +45,7 @@ Eventy::action('my.hook', 'awesome');
 
 The first parameter is the name of the hook, you will use this at a later point when you'll be listening to your hook. All subsequent parameters are sent to the action as parameters. These can be anything you'd like. For example you might want to tell the listeners that this is attached to a certain model. Then you would pass this as one of the arguments.
 
-To listen to your models, you attach listeners. These are best added to your `AppServiceProvider` `boot()` method. 
+To listen to your hooks, you attach listeners. These are best added to your `AppServiceProvider` `boot()` method. 
 
 For example if you wanted to hook in to the above hook, you could do:
 
@@ -55,7 +55,7 @@ Eventy::addAction('my.hook', function($what) {
 }, 20, 1);
 ```
 
-Again the first argument must be the name of the hook. The second would be a callback. This could be either a Closure, a string referring to a class in the application container (`MyNamespace\Http\Listener@myHookListener`) or a globally registered function `function_name`. The third argument is the priority of the hook. The lower the number, the earlier the execution. The fourth parameter specifies the number of arguments your listener accepts.
+Again the first argument must be the name of the hook. The second would be a callback. This could be either a Closure, a string referring to a class in the application container (`MyNamespace\Http\Listener@myHookListener`), an array callback (`[$object, 'method']`) or a globally registered function `function_name`. The third argument is the priority of the hook. The lower the number, the earlier the execution. The fourth parameter specifies the number of arguments your listener accepts.
 
 ### Filters
 

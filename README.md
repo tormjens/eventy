@@ -1,4 +1,4 @@
-# Eventy
+# Eventy [![Build Status](https://travis-ci.org/tormjens/eventy.svg?branch=master)](https://travis-ci.org/tormjens/eventy)
 
 Actions and filters in Laravel. WordPress-style. 
 

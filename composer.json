@@ -30,7 +30,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "TorMorten\\Eventy\\EventServiceProvider"
+                "TorMorten\\Eventy\\EventServiceProvider",
+                "TorMorten\\Eventy\\EventBladeServiceProvider",
             ],
             "aliases": {
                 "Eventy": "TorMorten\\Eventy\\Facades\\Events"

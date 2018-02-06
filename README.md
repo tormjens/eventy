@@ -24,6 +24,7 @@ If you're using Laravel 5.5 you can start using the package at this point. Event
 
 ```php
     'TorMorten\Eventy\EventServiceProvider',
+    'TorMorten\Eventy\EventBladeServiceProvider', 
 ```
 
 3. Add the facade in `config/app.php`
@@ -91,7 +92,7 @@ Eventy::addAction('my.hook', function($what) {
 
 ### Using in Blade
 
-There are two directives availiable so you can use this in your Blade templates.
+Given you have added the `EventBladeServiceProvider` to your config, there are two directives availiable so you can use this in your Blade templates.
 
 Adding the same action as the one in the action example above:
 

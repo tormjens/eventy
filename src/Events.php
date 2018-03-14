@@ -72,6 +72,15 @@ class Events
     }
 
     /**
+     * Remove all actions
+     * @param string $hook  Hook name
+     */
+    public function removeAllActions($hook = null)
+    {
+        $this->action->removeAll($hook);
+    }
+
+	/**
      * Adds a filter.
      *
      * @param string $hook      Hook name
@@ -95,7 +104,16 @@ class Events
         $this->filter->remove($hook, $callback, $priority);
     }
 
-    /**
+	/**
+     * Remove all filters
+     * @param string $hook  Hook name
+     */
+    public function removeAllFilters($hook = null)
+    {
+        $this->filter->removeAll($hook);
+    }
+
+	/**
      * Set a new action.
      *
      * Actions never return anything. It is merely a way of executing code at a specific time in your code.

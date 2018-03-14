@@ -82,4 +82,53 @@ class FilterTest extends TestCase
         $this->assertEquals($this->events->getFilter()->getListeners()->values()[2]['priority'], 20);
         $this->assertEquals($this->events->getFilter()->getListeners()->values()[3]['priority'], 40);
     }
+
+    /**
+     * @test
+     */
+    public function a_single_filter_is_removed()
+    {
+        // check the collection has 1 item
+        $this->events->addFilter('my_awesome_filter', 'my_awesome_function', 30, 1);
+        $this->assertEquals($this->events->getFilter()->getListeners()->where( 'hook', 'my_awesome_filter')->count(), 1);
+
+        // check removeFilter removes the filter
+        $this->events->removeFilter('my_awesome_filter', 'my_awesome_function', 30);
+        $this->assertEquals($this->events->getFilter()->getListeners()->where( 'hook', 'my_awesome_filter')->count(), 0);
+
+    }
+
+    /**
+     * @test
+     */
+    public function all_filters_removed()
+    {
+        // check the collection has 3 items before checking they're removed
+        $this->events->addFilter('my_awesome_filter', 'my_awesome_function', 30, 1);
+        $this->events->addFilter('my_awesome_filter', 'my_other_awesome_function', 30, 1);
+        $this->events->addFilter('my_awesome_filter_2', 'my_awesome_function_2', 30, 1);
+        $this->assertEquals($this->events->getFilter()->getListeners()->count(), 3);
+
+        // check removeFilter removes the filter
+        $this->events->removeAllFilters();
+        $this->assertEquals($this->events->getFilter()->getListeners()->count(), 0);
+    }
+
+    /**
+     * @test
+     */
+    public function all_filters_removed_by_hook()
+    {
+        // check the collection has 1 item
+        $this->events->addFilter('my_awesome_filter', 'my_awesome_function', 30, 1);
+        $this->events->addFilter('my_awesome_filter', 'my_other_awesome_function', 30, 1);
+        $this->events->addFilter('my_awesome_filter_2', 'my_awesome_function', 30, 1);
+        $this->assertEquals($this->events->getFilter()->getListeners()->count(), 3);
+
+        // check removeFilter removes the filter
+        $this->events->removeAllFilters('my_awesome_filter');
+        $this->assertEquals($this->events->getFilter()->getListeners()->where( 'hook', 'my_awesome_filter')->count(), 0);
+        // check that the other filter wasn't removed
+        $this->assertEquals($this->events->getFilter()->getListeners()->where( 'hook', 'my_awesome_filter_2')->count(), 1);
+    }
 }

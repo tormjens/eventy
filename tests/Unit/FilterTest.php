@@ -90,12 +90,11 @@ class FilterTest extends TestCase
     {
         // check the collection has 1 item
         $this->events->addFilter('my_awesome_filter', 'my_awesome_function', 30, 1);
-        $this->assertEquals($this->events->getFilter()->getListeners()->where( 'hook', 'my_awesome_filter')->count(), 1);
+        $this->assertEquals($this->events->getFilter()->getListeners()->where('hook', 'my_awesome_filter')->count(), 1);
 
         // check removeFilter removes the filter
         $this->events->removeFilter('my_awesome_filter', 'my_awesome_function', 30);
-        $this->assertEquals($this->events->getFilter()->getListeners()->where( 'hook', 'my_awesome_filter')->count(), 0);
-
+        $this->assertEquals($this->events->getFilter()->getListeners()->where('hook', 'my_awesome_filter')->count(), 0);
     }
 
     /**
@@ -127,8 +126,8 @@ class FilterTest extends TestCase
 
         // check removeFilter removes the filter
         $this->events->removeAllFilters('my_awesome_filter');
-        $this->assertEquals($this->events->getFilter()->getListeners()->where( 'hook', 'my_awesome_filter')->count(), 0);
+        $this->assertEquals($this->events->getFilter()->getListeners()->where('hook', 'my_awesome_filter')->count(), 0);
         // check that the other filter wasn't removed
-        $this->assertEquals($this->events->getFilter()->getListeners()->where( 'hook', 'my_awesome_filter_2')->count(), 1);
+        $this->assertEquals($this->events->getFilter()->getListeners()->where('hook', 'my_awesome_filter_2')->count(), 1);
     }
 }

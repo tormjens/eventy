@@ -94,13 +94,13 @@ class ActionTest extends TestCase
         // check the collection has 1 item
         $this->events->addAction('my_great_action', 'my_great_function', 30, 1);
         $this->events->addAction('my_great_action', 'my_great_function', 10, 1);
-        $this->assertEquals($this->events->getAction()->getListeners()->where( 'hook', 'my_great_action')->count(), 2);
+        $this->assertEquals($this->events->getAction()->getListeners()->where('hook', 'my_great_action')->count(), 2);
 
         // check removeAction removes the correct action
         $this->events->removeAction('my_great_action', 'my_great_function', 30);
-        $this->assertEquals($this->events->getAction()->getListeners()->where( 'hook', 'my_great_action')->count(), 1);
+        $this->assertEquals($this->events->getAction()->getListeners()->where('hook', 'my_great_action')->count(), 1);
         // check that the action with priority 10 still exists in the collection (only the action with priority 30 should've been removed)
-        $this->assertEquals($this->events->getAction()->getListeners()->where( 'hook', 'my_great_action')->values()[0]['priority'], 10);
+        $this->assertEquals($this->events->getAction()->getListeners()->where('hook', 'my_great_action')->values()[0]['priority'], 10);
     }
 
     /**
@@ -132,8 +132,8 @@ class ActionTest extends TestCase
 
         // check removeAction removes the filter
         $this->events->removeAllActions('my_great_action');
-        $this->assertEquals($this->events->getAction()->getListeners()->where( 'hook', 'my_great_action')->count(), 0);
+        $this->assertEquals($this->events->getAction()->getListeners()->where('hook', 'my_great_action')->count(), 0);
         // check that the other action wasn't removed
-        $this->assertEquals($this->events->getAction()->getListeners()->where( 'hook', 'my_great_action_2')->count(), 1);
+        $this->assertEquals($this->events->getAction()->getListeners()->where('hook', 'my_great_action_2')->count(), 1);
     }
 }

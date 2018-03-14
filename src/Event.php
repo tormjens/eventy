@@ -37,6 +37,25 @@ abstract class Event
     }
 
     /**
+     * Removes a listener
+     *
+     * @param string  $hook      Hook name
+     * @param mixed   $callback  Function to execute
+     * @param integer $priority  Priority of the action
+     */
+    public function remove($hook, $callback, $priority = 20)
+    {
+        if ($this->listeners) {
+            $this->listeners->where('hook', $hook)
+                ->where('callback', $callback)
+                ->where('priority', $priority)
+                ->each(function ($listener, $key) {
+                    $this->listeners->forget($key);
+                });
+        }
+    }
+
+    /**
      * Gets a sorted list of all listeners.
      *
      * @return array

@@ -61,6 +61,17 @@ class Events
     }
 
     /**
+     * Remove an action
+     * @param string  $hook      Hook name
+     * @param mixed   $callback  Function to execute
+     * @param integer $priority  Priority of the action
+     */
+    public function removeAction($hook, $callback, $priority = 20)
+    {
+        $this->action->remove($hook, $callback, $priority);
+    }
+
+    /**
      * Adds a filter.
      *
      * @param string $hook      Hook name
@@ -71,6 +82,17 @@ class Events
     public function addFilter($hook, $callback, $priority = 20, $arguments = 1)
     {
         $this->filter->listen($hook, $callback, $priority, $arguments);
+    }
+
+    /**
+    * Remove a filter
+     * @param string  $hook      Hook name
+     * @param mixed   $callback  Function to execute
+     * @param integer $priority  Priority of the action
+     */
+    public function removeFilter($hook, $callback, $priority = 20)
+    {
+        $this->filter->remove($hook, $callback, $priority);
     }
 
     /**

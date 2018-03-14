@@ -3,14 +3,14 @@
 namespace EventyTests\Unit;
 
 use EventyTests\DummyClass;
-use TorMorten\Eventy\Events;
 use PHPUnit\Framework\TestCase;
+use TorMorten\Eventy\Events;
 
 class ActionTest extends TestCase
 {
     public function setUp()
     {
-        $this->events = new Events;
+        $this->events = new Events();
     }
 
     /**

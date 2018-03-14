@@ -7,10 +7,12 @@ class Filter extends Event
     protected $value = '';
 
     /**
-     * Filters a value
-     * @param  string $action Name of filter
-     * @param  array  $args   Arguments passed to the filter
-     * @return string         Always returns the value
+     * Filters a value.
+     *
+     * @param string $action Name of filter
+     * @param array  $args   Arguments passed to the filter
+     *
+     * @return string Always returns the value
      */
     public function fire($action, $args)
     {
@@ -19,7 +21,7 @@ class Filter extends Event
             $this->getListeners()->where('hook', $action)->each(function ($listener) use ($action, $args) {
                 $parameters = [];
                 $args[0] = $this->value;
-                for ($i=0; $i < $listener['arguments']; $i++) {
+                for ($i = 0; $i < $listener['arguments']; $i++) {
                     if (isset($args[$i])) {
                         $parameters[] = $args[$i];
                     }

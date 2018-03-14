@@ -13,6 +13,6 @@ class Events extends Facade
      */
     protected static function getFacadeAccessor()
     {
-    	return 'eventy';
+        return 'eventy';
     }
 }

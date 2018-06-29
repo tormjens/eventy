@@ -10,6 +10,11 @@ Actions are pieces of code you want to execute at certain points in your code. A
 
 Filters are made to modify entities. They always return some kind of value. By default they return their first parameters, and you should too. 
 
+(Read more about filters)[http://www.wpbeginner.com/glossary/filter/]
+
+
+(Read more about actions)[http://www.wpbeginner.com/glossary/action/]
+
 ## Installation
 
 1. Install using Composer

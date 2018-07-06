@@ -15,6 +15,14 @@ Filters are made to modify entities. They always return some kind of value. By d
 
 [Read more about actions](http://www.wpbeginner.com/glossary/action/)
 
+## When would I use Eventy?
+
+Eventy is best used as a way to allow extensibility to your code. Whether you're creating a package or an application, Eventy can bring the extensibility you need. 
+
+For example, Eventy can lay down the foundation for a plugin/module based system. You offer an "action" that allows plugins to register themselves. You might offer a "filter" so plugins can change the contents of an array in the core. You could even offer an "action" so plugins can modify the menu of your application.
+
+Eventy is in no way unique in its approach. Laravel provides the Macroable trait that allows you to "hack" in to a class and events so you can act on specific points in your code right out of the box. 
+
 ## Installation
 
 1. Install using Composer
@@ -109,4 +117,5 @@ Adding the same filter as the one in the filter example above:
 
 ```
 You are @filter('my.hook', 'awesome')
+
 ```

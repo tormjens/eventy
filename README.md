@@ -2,7 +2,7 @@
 
 Actions and filters in Laravel. WordPress-style. 
 
-Bring the event system you've learned to love to your Laravel project. Eventy (for lack of a better name) is a simple action and filter system.
+Eventy (for lack of a better name) is a simple action and filter (or hooks if you like) system.
 
 ## About
 

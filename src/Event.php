@@ -106,7 +106,7 @@ abstract class Event
         } elseif (is_callable($callback)) {
             return $callback;
         } else {
-            throw new Exception('$callback is not a Callable', 1);
+            throw new \Exception('$callback is not a Callable', 1);
         }
     }
 

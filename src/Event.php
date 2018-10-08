@@ -2,6 +2,8 @@
 
 namespace TorMorten\Eventy;
 
+use Illuminate\Support\Collection;
+
 abstract class Event
 {
 
@@ -13,15 +15,17 @@ abstract class Event
 
     public function __construct()
     {
-        $this->listeners = collect([]);
+        $this->listeners = new Collection();
     }
 
     /**
      * Adds a listener
-     * @param string  $hook      Hook name
-     * @param mixed   $callback  Function to execute
-     * @param integer $priority  Priority of the action
+     * @param string $hook Hook name
+     * @param mixed $callback Function to execute
+     * @param integer $priority Priority of the action
      * @param integer $arguments Number of arguments to accept
+     *
+     * @return Event
      */
     public function listen($hook, $callback, $priority = 20, $arguments = 1)
     {
@@ -41,19 +45,17 @@ abstract class Event
      */
     public function getListeners()
     {
-        // $listeners = $this->listeners->values();
-        // sort by priority
-        // uksort($values, function ($a, $b) {
-        //     return strnatcmp($a, $b);
-        // });
-
         return $this->listeners->sortBy('priority');
     }
 
     /**
      * Gets the function
+     *
      * @param  mixed $callback Callback
+     *
      * @return mixed           A closure, an array if "class@method" or a string if "function_name"
+     *
+     * @throws \Exception
      */
     protected function getFunction($callback)
     {
@@ -62,15 +64,15 @@ abstract class Event
             return array(app('\\' . $callback[0]), $callback[1]);
         } elseif (is_callable($callback)) {
             return $callback;
-        } else {
-            throw new Exception('$callback is not a Callable', 1);
         }
+
+        throw new \Exception('$callback is not a Callable', 1);
     }
 
     /**
      * Fires a new action
      * @param  string $action Name of action
-     * @param  array  $args   Arguments passed to the action
+     * @param  array $args Arguments passed to the action
      */
     abstract public function fire($action, $args);
 }

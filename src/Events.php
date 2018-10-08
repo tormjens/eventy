@@ -84,6 +84,50 @@ class Events
     }
 
     /**
+     * Remove a filter.
+     *
+     * @param string $hook Hook name
+     * @param mixed $callback Function to execute
+     * @param int $priority Priority of the action
+     */
+    public function removeFilter($hook, $callback, $priority = 20)
+    {
+        $this->filter->remove($hook, $callback, $priority);
+    }
+
+    /**
+     * Remove all filters.
+     *
+     * @param string $hook Hook name
+     */
+    public function removeAllFilters($hook = null)
+    {
+        $this->filter->removeAll($hook);
+    }
+
+    /**
+     * Remove a action.
+     *
+     * @param string $hook Hook name
+     * @param mixed $callback Function to execute
+     * @param int $priority Priority of the action
+     */
+    public function removeAction($hook, $callback, $priority = 20)
+    {
+        $this->action->remove($hook, $callback, $priority);
+    }
+
+    /**
+     * Remove all actions.
+     *
+     * @param string $hook Hook name
+     */
+    public function removeAllActions($hook = null)
+    {
+        $this->action->removeAll($hook);
+    }
+
+    /**
      * Set a new action
      *
      * Actions never return anything. It is merely a way of executing code at a specific time in your code.

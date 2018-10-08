@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class EventServiceProvider extends ServiceProvider
 {
     /**
-     * Registers the eventy singleton
+     * Registers the eventy singleton.
      *
      * @return void
      */

@@ -4,7 +4,6 @@ namespace TorMorten\Eventy;
 
 class Action extends Event
 {
-
     /**
      * Runs an action
      *

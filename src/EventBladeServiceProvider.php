@@ -2,8 +2,8 @@
 
 namespace TorMorten\Eventy;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
 
 class EventBladeServiceProvider extends ServiceProvider
 {
@@ -14,14 +14,14 @@ class EventBladeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /**
+        /*
          * Adds a directive in Blade for actions
          */
         Blade::directive('action', function ($expression) {
             return "<?php Eventy::action({$expression}); ?>";
         });
 
-        /**
+        /*
          * Adds a directive in Blade for filters
          */
         Blade::directive('filter', function ($expression) {

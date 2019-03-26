@@ -37,7 +37,7 @@ class HashedCallable
         return $this->callback;
     }
 
-    public function is(HashedCallable $callable)
+    public function is(self $callable)
     {
         return $callable->getSignature() === $this->getSignature();
     }

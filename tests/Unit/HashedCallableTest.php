@@ -2,7 +2,6 @@
 
 namespace EventyTests\Unit;
 
-use EventyTests\DummyClass;
 use PHPUnit\Framework\TestCase;
 use TorMorten\Eventy\Events;
 use TorMorten\Eventy\HashedCallable;
@@ -47,5 +46,4 @@ class HashedCallableTest extends TestCase
         $this->events->removeAction('my_great_action', $callback2);
         $this->assertEquals($this->events->getAction()->getListeners()->count(), 0);
     }
-
 }

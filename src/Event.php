@@ -19,17 +19,17 @@ abstract class Event
     /**
      * Adds a listener.
      *
-     * @param string $hook      Hook name
-     * @param mixed  $callback  Function to execute
-     * @param int    $priority  Priority of the action
-     * @param int    $arguments Number of arguments to accept
+     * @param string $hook Hook name
+     * @param mixed $callback Function to execute
+     * @param int $priority Priority of the action
+     * @param int $arguments Number of arguments to accept
      */
     public function listen($hook, $callback, $priority = 20, $arguments = 1)
     {
         $this->listeners->push([
-            'hook'      => $hook,
-            'callback'  => $callback,
-            'priority'  => $priority,
+            'hook' => $hook,
+            'callback' => $callback instanceof \Closure ? new HashedCallable($callback) : $callback,
+            'priority' => $priority,
             'arguments' => $arguments,
         ]);
 
@@ -39,15 +39,20 @@ abstract class Event
     /**
      * Removes a listener.
      *
-     * @param string $hook     Hook name
-     * @param mixed  $callback Function to execute
-     * @param int    $priority Priority of the action
+     * @param string $hook Hook name
+     * @param mixed $callback Function to execute
+     * @param int $priority Priority of the action
      */
     public function remove($hook, $callback, $priority = 20)
     {
         if ($this->listeners) {
             $this->listeners->where('hook', $hook)
-                ->where('callback', $callback)
+                ->filter(function ($listener) use ($callback) {
+                    if ($callback instanceof \Closure) {
+                        return (new HashedCallable($callback))->is($listener['callback']);
+                    }
+                    return $callback === $listener['callback'];
+                })
                 ->where('priority', $priority)
                 ->each(function ($listener, $key) {
                     $this->listeners->forget($key);
@@ -102,7 +107,7 @@ abstract class Event
         if (is_string($callback) && strpos($callback, '@')) {
             $callback = explode('@', $callback);
 
-            return [app('\\'.$callback[0]), $callback[1]];
+            return [app('\\' . $callback[0]), $callback[1]];
         } elseif (is_callable($callback)) {
             return $callback;
         } else {
@@ -114,7 +119,7 @@ abstract class Event
      * Fires a new action.
      *
      * @param string $action Name of action
-     * @param array  $args   Arguments passed to the action
+     * @param array $args Arguments passed to the action
      */
     abstract public function fire($action, $args);
 }

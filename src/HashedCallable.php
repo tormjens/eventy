@@ -1,25 +1,44 @@
 <?php
 
-namespace Tormjens\Eventy;
+namespace TorMorten\Eventy;
+
+use SuperClosure\Serializer;
 
 class HashedCallable
 {
     protected $callback;
-    protected $id;
+    protected $signature;
 
     public function __construct(\Closure $callback)
     {
         $this->callback = $callback;
-        $this->id = uniqid();
+        $this->id = $this->generateSignature();
+    }
+
+    protected function generateSignature()
+    {
+        $serializer = new Serializer();
+
+        return base64_encode($serializer->serialize($this->callback));
     }
 
     public function __invoke()
     {
-        return call_user_func_array($this->callback, func_get_args());
+        return call_user_func_array($this->getCallback(), func_get_args());
     }
 
-    public function getId()
+    public function getSignature()
     {
-        return $this->id;
+        return $this->signature;
+    }
+
+    public function getCallback()
+    {
+        return $this->callback;
+    }
+
+    public function is(HashedCallable $callable)
+    {
+        return $callable->getSignature() === $this->getSignature();
     }
 }

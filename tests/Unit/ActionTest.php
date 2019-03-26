@@ -30,7 +30,8 @@ class ActionTest extends TestCase
      */
     public function it_can_hook_an_array()
     {
-        $class = new class('DummyClass') {
+        $class = new class('DummyClass')
+        {
             public function write()
             {
                 echo 'Action Fired, Baby!';

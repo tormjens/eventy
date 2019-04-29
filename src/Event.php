@@ -28,7 +28,7 @@ abstract class Event
     {
         $this->listeners->push([
             'hook'      => $hook,
-            'callback'  => $callback,
+            'callback'  => $callback instanceof \Closure ? new HashedCallable($callback) : $callback,
             'priority'  => $priority,
             'arguments' => $arguments,
         ]);
@@ -47,7 +47,13 @@ abstract class Event
     {
         if ($this->listeners) {
             $this->listeners->where('hook', $hook)
-                ->where('callback', $callback)
+                ->filter(function ($listener) use ($callback) {
+                    if ($callback instanceof \Closure) {
+                        return (new HashedCallable($callback))->is($listener['callback']);
+                    }
+
+                    return $callback === $listener['callback'];
+                })
                 ->where('priority', $priority)
                 ->each(function ($listener, $key) {
                     $this->listeners->forget($key);

@@ -10,7 +10,7 @@ class Filter extends Event
      * Filters a value.
      *
      * @param string $action Name of filter
-     * @param array  $args   Arguments passed to the filter
+     * @param array $args Arguments passed to the filter
      *
      * @return string Always returns the value
      */
@@ -22,9 +22,7 @@ class Filter extends Event
                 $parameters = [];
                 $args[0] = $this->value;
                 for ($i = 0; $i < $listener['arguments']; $i++) {
-                    if (isset($args[$i])) {
-                        $parameters[] = $args[$i];
-                    }
+                    $parameters[] = $args[$i];
                 }
                 $this->value = call_user_func_array($this->getFunction($listener['callback']), $parameters);
             });

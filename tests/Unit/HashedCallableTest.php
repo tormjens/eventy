@@ -8,7 +8,7 @@ use TorMorten\Eventy\HashedCallable;
 
 class HashedCallableTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->events = new Events();
     }

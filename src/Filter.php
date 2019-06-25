@@ -22,7 +22,8 @@ class Filter extends Event
                 $parameters = [];
                 $args[0] = $this->value;
                 for ($i = 0; $i < $listener['arguments']; $i++) {
-                    $parameters[] = $args[$i];
+                    $value = $args[$i] ?? null;
+                    $parameters[] = $value;
                 }
                 $this->value = call_user_func_array($this->getFunction($listener['callback']), $parameters);
             });

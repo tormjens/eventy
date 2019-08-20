@@ -54,6 +54,8 @@ If you're using Laravel 5.5 or later you can start using the package at this poi
 Anywhere in your code you can create a new action like so:
 
 ```php
+use TorMorten\Eventy\Facades\Events as Eventy;
+
 Eventy::action('my.hook', 'awesome');
 ```
 

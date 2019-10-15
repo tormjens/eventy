@@ -119,3 +119,50 @@ Adding the same filter as the one in the filter example above:
 You are @filter('my.hook', 'awesome')
 
 ```
+
+### Using it to enable extensibility
+
+Here's an example of how Eventy could be used in a real application where you have the concept of plugins.
+
+Plugin A has a class where it builds a query to fetch all published posts
+
+```php
+class PostsQueryBuilder
+{
+    public function query()
+    {
+        return Post::where('published_at', '>', now());
+    }
+}
+```
+
+Using Eventy I can offer a filter for other plugins to hook in to this:
+
+```php
+use TorMorten\Eventy\Facades\Events as Eventy;
+class PostsQueryBuilder
+{
+    public function query()
+    {
+        $query = resolve(Post::where('published_at', '>', now());
+        return Eventy::filter('posts-query-builder:query', $query);
+    }
+}
+```
+
+Then, Plugin B comes along a needs to modify said query in other to only include posts with the word foo in the title.
+
+In Plugin B's service provider (preferably in the boot method, since it will always be fired after Eventy has been made available) we'll add a listener for the event.
+```php
+use TorMorten\Eventy\Facades\Events as Eventy;
+
+class PluginBServiceProvider extends ServiceProvider 
+{
+    public function boot()
+    {
+        Eventy::addFilter('posts-query-builder:query', function($query) {
+            return $query->where('title', 'like', '%foo%');
+        });
+    }
+}
+```

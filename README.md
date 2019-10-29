@@ -1,6 +1,14 @@
-# Eventy [![Build Status](https://travis-ci.org/tormjens/eventy.svg?branch=master)](https://travis-ci.org/tormjens/eventy)
+<p align="center">
+    <img src="/art/logo.png" width="400" height="123" alt="eventy logo">
+</p>
 
-Actions and filters in Laravel. WordPress-style. 
+<br>
+
+<p align="center">
+    <a href="https://travis-ci.com/tormjens/eventy"><img src="https://travis-ci.com/tormjens/eventy.svg?branch=master" alt="Build Status"/></a>
+</p>
+
+Actions and filters in Laravel. WordPress-style.
 
 Eventy (for lack of a better name) is a simple action and filter (or hooks if you like) system.
 
@@ -8,7 +16,7 @@ Eventy (for lack of a better name) is a simple action and filter (or hooks if yo
 
 Actions are pieces of code you want to execute at certain points in your code. Actions never return anything but merely serve as the option to hook in to your existing code without having to mess things up.
 
-Filters are made to modify entities. They always return some kind of value. By default they return their first parameter and you should too. 
+Filters are made to modify entities. They always return some kind of value. By default they return their first parameter and you should too.
 
 [Read more about filters](http://www.wpbeginner.com/glossary/filter/)
 
@@ -17,11 +25,11 @@ Filters are made to modify entities. They always return some kind of value. By d
 
 ## When would I use Eventy?
 
-Eventy is best used as a way to allow extensibility to your code. Whether you're creating a package or an application, Eventy can bring the extensibility you need. 
+Eventy is best used as a way to allow extensibility to your code. Whether you're creating a package or an application, Eventy can bring the extensibility you need.
 
 For example, Eventy can lay down the foundation for a plugin/module based system. You offer an "action" that allows plugins to register themselves. You might offer a "filter" so plugins can change the contents of an array in the core. You could even offer an "action" so plugins can modify the menu of your application.
 
-Eventy is in no way unique in its approach. Laravel provides the Macroable trait that allows you to "hack" in to a class and events so you can act on specific points in your code right out of the box. 
+Eventy is in no way unique in its approach. Laravel provides the Macroable trait that allows you to "hack" in to a class and events so you can act on specific points in your code right out of the box.
 
 ## Installation
 
@@ -37,7 +45,7 @@ If you're using Laravel 5.5 or later you can start using the package at this poi
 
 ```php
     'TorMorten\Eventy\EventServiceProvider',
-    'TorMorten\Eventy\EventBladeServiceProvider', 
+    'TorMorten\Eventy\EventBladeServiceProvider',
 ```
 
 3. Add the facade in `config/app.php`
@@ -61,7 +69,7 @@ Eventy::action('my.hook', 'awesome');
 
 The first parameter is the name of the hook; you will use this at a later point when you'll be listening to your hook. All subsequent parameters are sent to the action as parameters. These can be anything you'd like. For example you might want to tell the listeners that this is attached to a certain model. Then you would pass this as one of the arguments.
 
-To listen to your hooks, you attach listeners. These are best added to your `AppServiceProvider` `boot()` method. 
+To listen to your hooks, you attach listeners. These are best added to your `AppServiceProvider` `boot()` method.
 
 For example if you wanted to hook in to the above hook, you could do:
 
@@ -75,15 +83,15 @@ Again the first argument must be the name of the hook. The second would be a cal
 
 ### Filters
 
-Filters work in much the same way as actions and have the exact same build-up as actions. The most significant difference is that filters always return their value. 
+Filters work in much the same way as actions and have the exact same build-up as actions. The most significant difference is that filters always return their value.
 
 To add a filter:
 
-```php 
+```php
 $value = Eventy::filter('my.hook', 'awesome');
 ```
 
-If no listeners are attached to this hook, the filter would simply return `'awesome'`. 
+If no listeners are attached to this hook, the filter would simply return `'awesome'`.
 
 This is how you add a listener to this filter (still in the `AppServiceProvider`):
 
@@ -158,7 +166,7 @@ In Plugin B's service provider (preferably in the boot method, since it will alw
 ```php
 use TorMorten\Eventy\Facades\Events as Eventy;
 
-class PluginBServiceProvider extends ServiceProvider 
+class PluginBServiceProvider extends ServiceProvider
 {
     public function boot()
     {
@@ -168,3 +176,7 @@ class PluginBServiceProvider extends ServiceProvider
     }
 }
 ```
+
+## Credits
+- Created by [Tor Morten Jensen](https://twitter.com/tormorten)
+- Logo by [Caneco](https://twitter.com/caneco)

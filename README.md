@@ -6,6 +6,7 @@
 
 <p align="center">
     <a href="https://travis-ci.com/tormjens/eventy"><img src="https://travis-ci.com/tormjens/eventy.svg?branch=master" alt="Build Status"/></a>
+    <a href='https://coveralls.io/github/tormjens/eventy?branch=master'><img src='https://coveralls.io/repos/github/tormjens/eventy/badge.svg?branch=master' alt='Coverage Status' /></a>
 </p>
 
 Actions and filters in Laravel. WordPress-style.

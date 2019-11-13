@@ -2,9 +2,6 @@ language: php
 php:
   - '7.2'
   - '7.3'
-env:
-  matrix:
-    - PREFER_LOWEST="--prefer-lowest"
 before_script:
   - composer update --prefer-dist --prefer-stable $PREFER_LOWEST
 script:

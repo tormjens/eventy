@@ -5,7 +5,6 @@ php:
 env:
   matrix:
     - PREFER_LOWEST="--prefer-lowest"
-    - PREFER_LOWEST=""
 before_script:
   - composer update --prefer-dist --prefer-stable $PREFER_LOWEST
 script:

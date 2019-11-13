@@ -1,15 +1,22 @@
 language: php
-
 php:
-  - 7.3
-
+  - '7.2'
+  - '7.3'
+env:
+  matrix:
+    - PREFER_LOWEST="--prefer-lowest"
+    - PREFER_LOWEST=""
 before_script:
-  - composer self-update
-  - composer install --no-interaction
-
+  - composer update --prefer-dist --prefer-stable $PREFER_LOWEST
 script:
-  - vendor/bin/phpunit
-
+  - mkdir -p build/logs
+  - phpunit --coverage-clover build/logs/clover.xml
+after_script:
+  - php vendor/bin/php-coveralls -v
+branches:
+  only:
+    - master
+    - develop
 cache:
   directories:
-    - vendor
+    - $HOME/.composer/cache

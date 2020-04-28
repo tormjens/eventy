@@ -2,7 +2,7 @@
 
 namespace TorMorten\Eventy;
 
-use SuperClosure\Serializer;
+use Opis\Closure\SerializableClosure;
 
 class HashedCallable
 {
@@ -17,9 +17,11 @@ class HashedCallable
 
     protected function generateSignature()
     {
-        $serializer = new Serializer();
-
-        return base64_encode($serializer->serialize($this->callback));
+        return base64_encode(
+            serialize(
+                new SerializableClosure($this->callback)
+            )
+        );
     }
 
     public function __invoke()

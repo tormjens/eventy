@@ -18,14 +18,14 @@ class EventBladeServiceProvider extends ServiceProvider
          * Adds a directive in Blade for actions
          */
         Blade::directive('action', function ($expression) {
-            return "<?php Eventy::action({$expression}); ?>";
+            return "<?php app('eventy')->action({$expression}); ?>";
         });
 
         /*
          * Adds a directive in Blade for filters
          */
         Blade::directive('filter', function ($expression) {
-            return "<?php echo Eventy::filter({$expression}); ?>";
+            return "<?php echo app('eventy')->filter({$expression}); ?>";
         });
     }
 }

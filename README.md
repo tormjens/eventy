@@ -74,7 +74,7 @@ To listen to your hooks, you attach listeners. These are best added to your `App
 
 For example if you wanted to hook in to the above hook, you could do:
 
-```
+```php
 Eventy::addAction('my.hook', function($user) {
     if ($user->is_awesome) {
          $this->doSomethingAwesome($user);
@@ -195,7 +195,7 @@ Here's an example of an action being added to the a blade template for extensibi
 This would allow for your plugins/controllers to hook into each blog post footer.
 
 In this example a share link is added.
-```
+```php
 use TorMorten\Eventy\Facades\Events as Eventy;
 class SharePostsController
 {
@@ -210,7 +210,7 @@ class SharePostsController
 ```
 
 In this example a comment count is added.
-```
+```php
 use TorMorten\Eventy\Facades\Events as Eventy;
 class CommentsPostsController
 {

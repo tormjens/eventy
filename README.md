@@ -65,7 +65,7 @@ Anywhere in your code you can create a new action like so:
 ```php
 use TorMorten\Eventy\Facades\Events as Eventy;
 
-Eventy::action('my.hook', 'awesome');
+Eventy::action('my.hook', $user);
 ```
 
 The first parameter is the name of the hook; you will use this at a later point when you'll be listening to your hook. All subsequent parameters are sent to the action as parameters. These can be anything you'd like. For example you might want to tell the listeners that this is attached to a certain model. Then you would pass this as one of the arguments.
@@ -75,8 +75,10 @@ To listen to your hooks, you attach listeners. These are best added to your `App
 For example if you wanted to hook in to the above hook, you could do:
 
 ```
-Eventy::addAction('my.hook', function($what) {
-    echo 'You are '. $what;
+Eventy::addAction('my.hook', function($user) {
+    if ($user->is_awesome) {
+         $this->doSomethingAwesome($user);
+    }
 }, 20, 1);
 ```
 
@@ -121,7 +123,7 @@ Given you have added the `EventBladeServiceProvider` to your config, there are t
 Adding the same action as the one in the action example above:
 
 ```
-@action('my.hook', 'awesome')
+@action('my.hook', $user)
 ```
 
 Adding the same filter as the one in the filter example above:
@@ -177,6 +179,51 @@ class PluginBServiceProvider extends ServiceProvider
     }
 }
 ```
+
+Here's an example of an action being added to the a blade template for extensibility by plugins that can be conditionally loaded. Abstracting controller dependancies within your template views.
+
+
+```
+@foreach ($posts as $post)
+    ...
+    <p>{{ $post->body }}</p>
+    ...
+    @action('blade-posts-loop-post-footer', $post)
+@endforeach
+```
+
+This would allow for your plugins/controllers to hook into each blog post footer.
+
+In this example a share link is added.
+```
+use TorMorten\Eventy\Facades\Events as Eventy;
+class SharePostsController
+{
+    public function boot()
+    {
+        Eventy::addAction('blade-posts-loop-post-footer', function($post) {
+            echo '<a href="twitter.com?share='.$post->url.'">Twitter</a>';
+            printf('<a href="https://xyz.com?share='.$post->url.'">XYZbook</a>');
+        });
+    }
+}
+```
+
+In this example a comment count is added.
+```
+use TorMorten\Eventy\Facades\Events as Eventy;
+class CommentsPostsController
+{
+    public function boot()
+    {
+        Eventy::addAction('blade-posts-loop-post-footer', function($post) {
+            echo 'Comments: ' . count($post->comments);
+        });
+    }
+}
+```
+
+
 
 ## Credits
 - Created by [Tor Morten Jensen](https://twitter.com/tormorten)

@@ -14,7 +14,7 @@ class EventBladeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if($this->app->has('blade.compiler')){
+        if ($this->app->has('blade.compiler')) {
             /*
              * Adds a directive in Blade for actions
              */

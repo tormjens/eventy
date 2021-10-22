@@ -10,7 +10,7 @@ class Filter extends Event
      * Filters a value.
      *
      * @param string $action Name of filter
-     * @param array $args Arguments passed to the filter
+     * @param array  $args   Arguments passed to the filter
      *
      * @return string Always returns the value
      */
@@ -18,7 +18,7 @@ class Filter extends Event
     {
         $this->value = isset($args[0]) ? $args[0] : ''; // get the value, the first argument is always the value
         if ($this->getListeners()) {
-            $this->getListeners()->where('hook', $action)->each(function ($listener) use ($action, $args) {
+            $this->getListeners()->where('hook', $action)->each(function ($listener) use ($args) {
                 $parameters = [];
                 $args[0] = $this->value;
                 for ($i = 0; $i < $listener['arguments']; $i++) {

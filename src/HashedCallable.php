@@ -18,6 +18,7 @@ class HashedCallable
 
     /**
      * HashedCallable constructor.
+     *
      * @param \Closure $callback
      */
     public function __construct(\Closure $callback)
@@ -41,7 +42,8 @@ class HashedCallable
     }
 
     /**
-     * Call the callback when the class is invoked
+     * Call the callback when the class is invoked.
+     *
      * @return mixed|void
      */
     public function __invoke()
@@ -50,7 +52,8 @@ class HashedCallable
     }
 
     /**
-     * Gets the signature
+     * Gets the signature.
+     *
      * @return string
      */
     public function getSignature()
@@ -59,7 +62,8 @@ class HashedCallable
     }
 
     /**
-     * Gets the callback
+     * Gets the callback.
+     *
      * @return \Closure
      */
     public function getCallback()
@@ -68,8 +72,10 @@ class HashedCallable
     }
 
     /**
-     * Checks whether the provided HashedCallable matches this one
+     * Checks whether the provided HashedCallable matches this one.
+     *
      * @param HashedCallable $callable
+     *
      * @return bool
      */
     public function is(self $callable)

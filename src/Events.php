@@ -147,7 +147,7 @@ class Events
      *
      * @return mixed
      */
-    public function filter(string $action, string $value, ...$parameters)
+    public function filter(string $action, $value, ...$parameters)
     {
         return $this->filter->fire($action, [$value, ...$parameters]);
     }

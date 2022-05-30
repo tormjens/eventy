@@ -124,8 +124,8 @@ class Events
      *
      * You can add as many parameters as you'd like.
      *
-     * @param string $action Name of hook
-     * @param mixed ...$parameters
+     * @param string $action        Name of hook
+     * @param mixed  ...$parameters
      *
      * @return void
      */
@@ -141,9 +141,9 @@ class Events
      *
      * You can add as many parameters as you'd like.
      *
-     * @param string $action Name of hook
-     * @param mixed $value The original filter value
-     * @param mixed ...$parameters
+     * @param string $action        Name of hook
+     * @param mixed  $value         The original filter value
+     * @param mixed  ...$parameters
      *
      * @return mixed
      */

@@ -124,19 +124,14 @@ class Events
      *
      * You can add as many parameters as you'd like.
      *
-     * @param string $action     Name of hook
-     * @param mixed  $parameter1 A parameter
-     * @param mixed  $parameter2 Another parameter
+     * @param string $action        Name of hook
+     * @param mixed  ...$parameters
      *
      * @return void
      */
-    public function action()
+    public function action(string $action, ...$parameters)
     {
-        $args = func_get_args();
-        $hook = $args[0];
-        unset($args[0]);
-        $args = array_values($args);
-        $this->action->fire($hook, $args);
+        $this->action->fire($action, $parameters);
     }
 
     /**
@@ -146,20 +141,14 @@ class Events
      *
      * You can add as many parameters as you'd like.
      *
-     * @param string $action     Name of hook
-     * @param mixed  $value      The original filter value
-     * @param mixed  $parameter1 A parameter
-     * @param mixed  $parameter2 Another parameter
+     * @param string $action        Name of hook
+     * @param mixed  $value         The original filter value
+     * @param mixed  ...$parameters
      *
-     * @return void
+     * @return mixed
      */
-    public function filter()
+    public function filter(string $action, $value, ...$parameters)
     {
-        $args = func_get_args();
-        $hook = $args[0];
-        unset($args[0]);
-        $args = array_values($args);
-
-        return $this->filter->fire($hook, $args);
+        return $this->filter->fire($action, [$value, ...$parameters]);
     }
 }

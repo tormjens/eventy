@@ -24,7 +24,7 @@ class HashedCallable
     public function __construct(\Closure $callback)
     {
         $this->callback = $callback;
-        $this->id = $this->generateSignature();
+        $this->signature = $this->generateSignature();
     }
 
     /**

@@ -7,7 +7,7 @@ abstract class Event
     /**
      * Holds the event listeners.
      *
-     * @var array
+     * @var \Illuminate\Support\Collection<TKey, TValue>
      */
     protected $listeners = null;
 
@@ -83,7 +83,7 @@ abstract class Event
     /**
      * Gets a sorted list of all listeners.
      *
-     * @return array
+     * @return \Illuminate\Support\Collection<TKey, TValue>
      */
     public function getListeners()
     {

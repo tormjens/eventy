@@ -110,7 +110,7 @@ abstract class Event
 
             return [app('\\'.$callback[0]), $callback[1]];
         } elseif (is_string($callback)) {
-            if(function_exists($callback)) {
+            if (function_exists($callback)) {
                 return $callback;
             }
 

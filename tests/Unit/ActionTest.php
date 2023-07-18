@@ -5,7 +5,8 @@ namespace EventyTests\Unit;
 use PHPUnit\Framework\TestCase;
 use TorMorten\Eventy\Events;
 
-function test_function() {
+function test_function()
+{
     echo 'Action Fired, Baby!';
 }
 

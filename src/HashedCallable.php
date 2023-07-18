@@ -2,7 +2,7 @@
 
 namespace TorMorten\Eventy;
 
-use Opis\Closure\SerializableClosure;
+use Laravel\SerializableClosure\SerializableClosure;
 
 class HashedCallable
 {

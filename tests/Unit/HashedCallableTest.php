@@ -41,9 +41,12 @@ class HashedCallableTest extends TestCase
         };
 
         $this->events->addAction('my_great_action', $callback);
-        $this->assertEquals($this->events->getAction()->getListeners()->count(), 1);
+        $this->events->addAction('my_great_action', $callback2);
+
+        $this->assertEquals($this->events->getAction()->getListeners()->count(), 2);
 
         $this->events->removeAction('my_great_action', $callback2);
-        $this->assertEquals($this->events->getAction()->getListeners()->count(), 0);
+
+        $this->assertEquals($this->events->getAction()->getListeners()->count(), 1);
     }
 }

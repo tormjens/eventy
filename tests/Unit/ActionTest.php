@@ -5,6 +5,10 @@ namespace EventyTests\Unit;
 use PHPUnit\Framework\TestCase;
 use TorMorten\Eventy\Events;
 
+function test_function() {
+    echo 'Action Fired, Baby!';
+}
+
 class ActionTest extends TestCase
 {
     public function setUp(): void
@@ -20,6 +24,16 @@ class ActionTest extends TestCase
         $this->events->addAction('my_awesome_action', function () {
             echo 'Action Fired, Baby!';
         });
+        $this->expectOutputString('Action Fired, Baby!');
+        $this->events->action('my_awesome_action');
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_hook_a_function()
+    {
+        $this->events->addAction('my_awesome_action', 'EventyTests\Unit\test_function');
         $this->expectOutputString('Action Fired, Baby!');
         $this->events->action('my_awesome_action');
     }

@@ -114,7 +114,7 @@ abstract class Event
                 return $callback;
             }
 
-            return ['\\'.$callback, 'handle'];
+            return [resolve('\\'.$callback), 'handle'];
         } elseif (is_callable($callback)) {
             return $callback;
         } elseif (is_array($callback)) {

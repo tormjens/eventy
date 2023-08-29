@@ -1,37 +1,38 @@
 <?php
 
 namespace TorMorten\Eventy;
-
 abstract class Event
 {
     /**
      * Holds the event listeners.
      *
-     * @var \Illuminate\Support\Collection<TKey, TValue>
+     * @var array
      */
-    protected $listeners = null;
+    protected $listeners = [];
 
     public function __construct()
     {
-        $this->listeners = collect([]);
+
     }
 
     /**
      * Adds a listener.
      *
-     * @param string $hook      Hook name
-     * @param mixed  $callback  Function to execute
-     * @param int    $priority  Priority of the action
-     * @param int    $arguments Number of arguments to accept
+     * @param string $hook Hook name
+     * @param mixed $callback Function to execute
+     * @param int $priority Priority of the action
+     * @param int $arguments Number of arguments to accept
      */
     public function listen($hook, $callback, $priority = 20, $arguments = 1)
     {
-        $this->listeners->push([
-            'hook'      => $hook,
-            'callback'  => $callback instanceof \Closure ? new HashedCallable($callback) : $callback,
-            'priority'  => $priority,
+        $this->listeners[$hook][] = [
+            'callback' => $callback,
+            'priority' => $priority,
             'arguments' => $arguments,
-        ]);
+        ];
+        usort($this->listeners[$hook], function ($a, $b) {
+            return $a['priority'] - $b['priority'];
+        });
 
         return $this;
     }
@@ -39,25 +40,18 @@ abstract class Event
     /**
      * Removes a listener.
      *
-     * @param string $hook     Hook name
-     * @param mixed  $callback Function to execute
-     * @param int    $priority Priority of the action
+     * @param string $hook Hook name
+     * @param mixed $callback Function to execute
+     * @param int $priority Priority of the action
      */
     public function remove($hook, $callback, $priority = 20)
     {
-        if ($this->listeners) {
-            $this->listeners->where('hook', $hook)
-                ->filter(function ($listener) use ($callback) {
-                    if ($callback instanceof \Closure) {
-                        return (new HashedCallable($callback))->is($listener['callback']);
-                    }
-
-                    return $callback === $listener['callback'];
-                })
-                ->where('priority', $priority)
-                ->each(function ($listener, $key) {
-                    $this->listeners->forget($key);
-                });
+        if (isset($this->listeners[$hook])) {
+            foreach ($this->listeners[$hook] as $key => $listener) {
+                if ($listener['callback'] == $callback && $listener['priority'] == $priority) {
+                    unset($this->listeners[$hook][$key]);
+                }
+            }
         }
     }
 
@@ -69,31 +63,28 @@ abstract class Event
     public function removeAll($hook = null)
     {
         if ($hook) {
-            if ($this->listeners) {
-                $this->listeners->where('hook', $hook)->each(function ($listener, $key) {
-                    $this->listeners->forget($key);
-                });
+            if (isset($this->listeners[$hook])) {
+                unset($this->listeners[$hook]);
             }
         } else {
-            // no hook was specified, so clear entire collection
-            $this->listeners = collect([]);
+            $this->listeners = [];
         }
     }
 
     /**
      * Gets a sorted list of all listeners.
      *
-     * @return \Illuminate\Support\Collection<TKey, TValue>
+     * @return array
      */
-    public function getListeners()
+    public function getListeners($hook)
     {
-        // $listeners = $this->listeners->values();
-        // sort by priority
-        // uksort($values, function ($a, $b) {
-        //     return strnatcmp($a, $b);
-        // });
+        if (isset($this->listeners[$hook])) {
+            $listeners = $this->listeners[$hook];
 
-        return $this->listeners->sortBy('priority');
+            return $listeners;
+        }
+
+        return [];
     }
 
     /**
@@ -108,13 +99,13 @@ abstract class Event
         if (is_string($callback) && strpos($callback, '@')) {
             $callback = explode('@', $callback);
 
-            return [app('\\'.$callback[0]), $callback[1]];
+            return [app('\\' . $callback[0]), $callback[1]];
         } elseif (is_string($callback)) {
             if (function_exists($callback)) {
                 return $callback;
             }
 
-            return [resolve('\\'.$callback), 'handle'];
+            return [resolve('\\' . $callback), 'handle'];
         } elseif (is_callable($callback)) {
             return $callback;
         } elseif (is_array($callback)) {
@@ -128,7 +119,7 @@ abstract class Event
      * Fires a new action.
      *
      * @param string $action Name of action
-     * @param array  $args   Arguments passed to the action
+     * @param array $args Arguments passed to the action
      */
     abstract public function fire($action, $args);
 }

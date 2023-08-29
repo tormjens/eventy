@@ -12,6 +12,8 @@ function test_function()
 
 class ActionTest extends TestCase
 {
+    protected $events;
+
     public function setUp(): void
     {
         $this->events = new Events();
@@ -94,10 +96,10 @@ class ActionTest extends TestCase
             echo 'Action Fired, Baby!';
         }, 40);
 
-        $this->assertEquals($this->events->getAction()->getListeners()->values()[0]['priority'], 8);
-        $this->assertEquals($this->events->getAction()->getListeners()->values()[1]['priority'], 12);
-        $this->assertEquals($this->events->getAction()->getListeners()->values()[2]['priority'], 20);
-        $this->assertEquals($this->events->getAction()->getListeners()->values()[3]['priority'], 40);
+        $this->assertEquals($this->events->getAction()->getListeners('my_great_action')[0]['priority'], 8);
+        $this->assertEquals($this->events->getAction()->getListeners('my_great_action')[1]['priority'], 12);
+        $this->assertEquals($this->events->getAction()->getListeners('my_great_action')[2]['priority'], 20);
+        $this->assertEquals($this->events->getAction()->getListeners('my_great_action')[3]['priority'], 40);
     }
 
     /**
@@ -108,13 +110,13 @@ class ActionTest extends TestCase
         // check the collection has 1 item
         $this->events->addAction('my_great_action', 'my_great_function', 30, 1);
         $this->events->addAction('my_great_action', 'my_great_function', 10, 1);
-        $this->assertEquals($this->events->getAction()->getListeners()->where('hook', 'my_great_action')->count(), 2);
+        $this->assertEquals(count($this->events->getAction()->getListeners('my_great_action')), 2);
 
         // check removeAction removes the correct action
         $this->events->removeAction('my_great_action', 'my_great_function', 30);
-        $this->assertEquals($this->events->getAction()->getListeners()->where('hook', 'my_great_action')->count(), 1);
+        $this->assertEquals(count($this->events->getAction()->getListeners('my_great_action')), 1);
         // check that the action with priority 10 still exists in the collection (only the action with priority 30 should've been removed)
-        $this->assertEquals($this->events->getAction()->getListeners()->where('hook', 'my_great_action')->values()[0]['priority'], 10);
+        $this->assertEquals($this->events->getAction()->getListeners('my_great_action')[0]['priority'], 10);
     }
 
     /**
@@ -126,11 +128,12 @@ class ActionTest extends TestCase
         $this->events->addAction('my_great_action', 'my_great_function', 30, 1);
         $this->events->addAction('my_great_action', 'my_other_great_function', 30, 1);
         $this->events->addAction('my_great_action_2', 'my_great_function', 30, 1);
-        $this->assertEquals($this->events->getAction()->getListeners()->count(), 3);
+        $this->assertEquals(count($this->events->getAction()->getListeners('my_great_action')), 2);
+        $this->assertEquals(count($this->events->getAction()->getListeners('my_great_action_2')), 1);
 
         // check removeFilter removes the filter
         $this->events->removeAllActions();
-        $this->assertEquals($this->events->getAction()->getListeners()->count(), 0);
+        $this->assertEquals(count($this->events->getAction()->getListeners('my_great_action')), 0);
     }
 
     /**
@@ -142,12 +145,13 @@ class ActionTest extends TestCase
         $this->events->addAction('my_great_action', 'my_great_function', 30, 1);
         $this->events->addAction('my_great_action', 'my_other_great_function', 30, 1);
         $this->events->addAction('my_great_action_2', 'my_great_function', 30, 1);
-        $this->assertEquals($this->events->getAction()->getListeners()->count(), 3);
+        $this->assertEquals(count($this->events->getAction()->getListeners('my_great_action')), 2);
+        $this->assertEquals(count($this->events->getAction()->getListeners('my_great_action_2')), 1);
 
         // check removeAction removes the filter
         $this->events->removeAllActions('my_great_action');
-        $this->assertEquals($this->events->getAction()->getListeners()->where('hook', 'my_great_action')->count(), 0);
+        $this->assertEquals(count($this->events->getAction()->getListeners('my_great_action')), 0);
         // check that the other action wasn't removed
-        $this->assertEquals($this->events->getAction()->getListeners()->where('hook', 'my_great_action_2')->count(), 1);
+        $this->assertEquals(count($this->events->getAction()->getListeners('my_great_action_2')), 1);
     }
 }

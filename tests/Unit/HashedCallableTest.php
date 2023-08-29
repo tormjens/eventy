@@ -8,6 +8,8 @@ use TorMorten\Eventy\HashedCallable;
 
 class HashedCallableTest extends TestCase
 {
+    protected $events;
+
     public function setUp(): void
     {
         $this->events = new Events();
@@ -26,7 +28,7 @@ class HashedCallableTest extends TestCase
 
         $hashedCallable = new HashedCallable($callback);
 
-        $this->assertTrue($this->events->getAction()->getListeners()->first()['callback']->is($hashedCallable));
+        $this->assertTrue($this->events->getAction()->getListeners('my_awesome_action')[0]['callback']->is($hashedCallable));
     }
 
     /** @test * */
@@ -43,10 +45,10 @@ class HashedCallableTest extends TestCase
         $this->events->addAction('my_great_action', $callback);
         $this->events->addAction('my_great_action', $callback2);
 
-        $this->assertEquals($this->events->getAction()->getListeners()->count(), 2);
+        $this->assertEquals(count($this->events->getAction()->getListeners('my_great_action')), 2);
 
         $this->events->removeAction('my_great_action', $callback2);
 
-        $this->assertEquals($this->events->getAction()->getListeners()->count(), 1);
+        $this->assertEquals(count($this->events->getAction()->getListeners('my_great_action')), 1);
     }
 }

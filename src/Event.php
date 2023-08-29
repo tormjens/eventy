@@ -26,7 +26,7 @@ abstract class Event
     public function listen($hook, $callback, $priority = 20, $arguments = 1)
     {
         $this->listeners[$hook][] = [
-            'callback' => $callback,
+            'callback' => $callback instanceof \Closure ? new HashedCallable($callback) : $callback,
             'priority' => $priority,
             'arguments' => $arguments,
         ];
@@ -48,7 +48,11 @@ abstract class Event
     {
         if (isset($this->listeners[$hook])) {
             foreach ($this->listeners[$hook] as $key => $listener) {
-                if ($listener['callback'] == $callback && $listener['priority'] == $priority) {
+                if ($callback instanceof \Closure && $listener['priority'] == $priority) {
+                    if ((new HashedCallable($callback))->is($listener['callback'])) {
+                        unset($this->listeners[$hook][$key]);
+                    }
+                } else if ($listener['callback'] == $callback && $listener['priority'] == $priority) {
                     unset($this->listeners[$hook][$key]);
                 }
             }

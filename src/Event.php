@@ -1,6 +1,7 @@
 <?php
 
 namespace TorMorten\Eventy;
+
 abstract class Event
 {
     /**
@@ -12,22 +13,21 @@ abstract class Event
 
     public function __construct()
     {
-
     }
 
     /**
      * Adds a listener.
      *
-     * @param string $hook Hook name
-     * @param mixed $callback Function to execute
-     * @param int $priority Priority of the action
-     * @param int $arguments Number of arguments to accept
+     * @param string $hook      Hook name
+     * @param mixed  $callback  Function to execute
+     * @param int    $priority  Priority of the action
+     * @param int    $arguments Number of arguments to accept
      */
     public function listen($hook, $callback, $priority = 20, $arguments = 1)
     {
         $this->listeners[$hook][] = [
-            'callback' => $callback,
-            'priority' => $priority,
+            'callback'  => $callback,
+            'priority'  => $priority,
             'arguments' => $arguments,
         ];
         usort($this->listeners[$hook], function ($a, $b) {
@@ -40,9 +40,9 @@ abstract class Event
     /**
      * Removes a listener.
      *
-     * @param string $hook Hook name
-     * @param mixed $callback Function to execute
-     * @param int $priority Priority of the action
+     * @param string $hook     Hook name
+     * @param mixed  $callback Function to execute
+     * @param int    $priority Priority of the action
      */
     public function remove($hook, $callback, $priority = 20)
     {
@@ -99,13 +99,13 @@ abstract class Event
         if (is_string($callback) && strpos($callback, '@')) {
             $callback = explode('@', $callback);
 
-            return [app('\\' . $callback[0]), $callback[1]];
+            return [app('\\'.$callback[0]), $callback[1]];
         } elseif (is_string($callback)) {
             if (function_exists($callback)) {
                 return $callback;
             }
 
-            return [resolve('\\' . $callback), 'handle'];
+            return [resolve('\\'.$callback), 'handle'];
         } elseif (is_callable($callback)) {
             return $callback;
         } elseif (is_array($callback)) {
@@ -119,7 +119,7 @@ abstract class Event
      * Fires a new action.
      *
      * @param string $action Name of action
-     * @param array $args Arguments passed to the action
+     * @param array  $args   Arguments passed to the action
      */
     abstract public function fire($action, $args);
 }

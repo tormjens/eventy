@@ -10,7 +10,7 @@ class Filter extends Event
      * Filters a value.
      *
      * @param string $action Name of filter
-     * @param array $args Arguments passed to the filter
+     * @param array  $args   Arguments passed to the filter
      *
      * @return string Always returns the value
      */

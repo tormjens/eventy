@@ -18,13 +18,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/doctrine/inflector/zipball/f9301a5b2fb1216b2b08f02ba04dc45423db6bff",
                 "reference": "f9301a5b2fb1216b2b08f02ba04dc45423db6bff",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0"
@@ -43,7 +37,7 @@
                     "Doctrine\\Inflector\\": "lib/Doctrine/Inflector"
                 }
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -105,23 +99,17 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v10.20.0",
+            "version": "v10.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "f494398dbaaead9e5ff16a18002d11634e8358e6"
+                "reference": "72c3cc6d44416db499d2ad11b8b27ae22e60a661"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/f494398dbaaead9e5ff16a18002d11634e8358e6",
-                "reference": "f494398dbaaead9e5ff16a18002d11634e8358e6",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/72c3cc6d44416db499d2ad11b8b27ae22e60a661",
+                "reference": "72c3cc6d44416db499d2ad11b8b27ae22e60a661",
+                "shasum": ""
             },
             "require": {
                 "illuminate/conditionable": "^10.0",
@@ -146,7 +134,7 @@
                     "Illuminate\\Support\\": ""
                 }
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -162,11 +150,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-08-11T14:48:51+00:00"
+            "time": "2023-09-07T14:13:46+00:00"
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v10.20.0",
+            "version": "v10.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -176,13 +164,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/illuminate/conditionable/zipball/d0958e4741fc9d6f516a552060fd1b829a85e009",
                 "reference": "d0958e4741fc9d6f516a552060fd1b829a85e009",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^8.0.2"
@@ -198,7 +180,7 @@
                     "Illuminate\\Support\\": ""
                 }
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -218,23 +200,17 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v10.20.0",
+            "version": "v10.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "eb1a7e72e159136a832f2c0467de5570bdc208ae"
+                "reference": "6c39fba7b2311e28f5c6ac7d729e3d49a2a98406"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/eb1a7e72e159136a832f2c0467de5570bdc208ae",
-                "reference": "eb1a7e72e159136a832f2c0467de5570bdc208ae",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/6c39fba7b2311e28f5c6ac7d729e3d49a2a98406",
+                "reference": "6c39fba7b2311e28f5c6ac7d729e3d49a2a98406",
+                "shasum": ""
             },
             "require": {
                 "php": "^8.1",
@@ -252,7 +228,7 @@
                     "Illuminate\\Contracts\\": ""
                 }
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -268,11 +244,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-07-26T21:27:34+00:00"
+            "time": "2023-09-05T19:07:46+00:00"
         },
         {
             "name": "illuminate/macroable",
-            "version": "v10.20.0",
+            "version": "v10.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -282,13 +258,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/illuminate/macroable/zipball/dff667a46ac37b634dcf68909d9d41e94dc97c27",
                 "reference": "dff667a46ac37b634dcf68909d9d41e94dc97c27",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^8.1"
@@ -304,7 +274,7 @@
                     "Illuminate\\Support\\": ""
                 }
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -324,23 +294,17 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v10.20.0",
+            "version": "v10.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "38d3e064b7b9420d2173f23a31a435bde221b56d"
+                "reference": "c21d327c2392eccd93748a2c9f1069a283a62d37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/38d3e064b7b9420d2173f23a31a435bde221b56d",
-                "reference": "38d3e064b7b9420d2173f23a31a435bde221b56d",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/illuminate/support/zipball/c21d327c2392eccd93748a2c9f1069a283a62d37",
+                "reference": "c21d327c2392eccd93748a2c9f1069a283a62d37",
+                "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "^2.0",
@@ -381,7 +345,7 @@
                     "Illuminate\\Support\\": ""
                 }
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -397,7 +361,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-08-21T13:45:59+00:00"
+            "time": "2023-09-12T18:56:44+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -467,23 +431,17 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.69.0",
+            "version": "2.70.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "4308217830e4ca445583a37d1bf4aff4153fa81c"
+                "reference": "d3298b38ea8612e5f77d38d1a99438e42f70341d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/4308217830e4ca445583a37d1bf4aff4153fa81c",
-                "reference": "4308217830e4ca445583a37d1bf4aff4153fa81c",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d3298b38ea8612e5f77d38d1a99438e42f70341d",
+                "reference": "d3298b38ea8612e5f77d38d1a99438e42f70341d",
+                "shasum": ""
             },
             "require": {
                 "ext-json": "*",
@@ -534,7 +492,7 @@
                     "Carbon\\": "src/Carbon/"
                 }
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -575,7 +533,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-03T09:00:52+00:00"
+            "time": "2023-09-07T16:43:50+00:00"
         },
         {
             "name": "psr/clock",
@@ -589,13 +547,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/php-fig/clock/zipball/e41a24703d4560fd0acb709162f73b8adfc3aa0d",
                 "reference": "e41a24703d4560fd0acb709162f73b8adfc3aa0d",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.0 || ^8.0"
@@ -606,7 +558,7 @@
                     "Psr\\Clock\\": "src/"
                 }
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -643,13 +595,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/php-fig/container/zipball/c71ecc56dfe541dbd90c5360474fbc405f8d5963",
                 "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.4.0"
@@ -665,7 +611,7 @@
                     "Psr\\Container\\": "src/"
                 }
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -702,13 +648,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/764e0b3939f5ca87cb904f570ef9be2d78a07865",
                 "reference": "764e0b3939f5ca87cb904f570ef9be2d78a07865",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=8.0.0"
@@ -724,7 +664,7 @@
                     "Psr\\SimpleCache\\": "src/"
                 }
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -759,13 +699,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/7c3aff79d10325257a001fcf92d991f24fc967cf",
                 "reference": "7c3aff79d10325257a001fcf92d991f24fc967cf",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=8.1"
@@ -785,7 +719,7 @@
                     "function.php"
                 ]
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -832,13 +766,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/42292d99c55abe617799667f454222c54c60e229",
                 "reference": "42292d99c55abe617799667f454222c54c60e229",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
@@ -867,7 +795,7 @@
                     "Symfony\\Polyfill\\Mbstring\\": ""
                 }
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -921,13 +849,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/6caa57379c4aec19c0a12a38b59b26487dcfe4b5",
                 "reference": "6caa57379c4aec19c0a12a38b59b26487dcfe4b5",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
@@ -953,7 +875,7 @@
                     "Resources/stubs"
                 ]
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1010,13 +932,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/translation/zipball/3ed078c54bc98bbe4414e1e9b2d5e85ed5a5c8bd",
                 "reference": "3ed078c54bc98bbe4414e1e9b2d5e85ed5a5c8bd",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=8.1",
@@ -1064,7 +980,7 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1111,13 +1027,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/02c24deb352fb0d79db5486c0c79905a85e37e86",
                 "reference": "02c24deb352fb0d79db5486c0c79905a85e37e86",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=8.1"
@@ -1140,7 +1050,7 @@
                     "/Test/"
                 ]
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1195,13 +1105,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/voku/portable-ascii/zipball/b56450eed252f6801410d810c8e1727224ae0743",
                 "reference": "b56450eed252f6801410d810c8e1727224ae0743",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.0.0"
@@ -1218,7 +1122,7 @@
                     "voku\\": "src/voku/"
                 }
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4059,13 +3963,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/service-contracts/zipball/40da9cc13ec349d9e4966ce18b5fbcd724ab10a4",
                 "reference": "40da9cc13ec349d9e4966ce18b5fbcd724ab10a4",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://repo.packagist.com/zymfonix/dists/%package%/%version%/r%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=8.1",
@@ -4092,7 +3990,7 @@
                     "/Test/"
                 ]
             },
-            "notification-url": "https://repo.packagist.com/zymfonix/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],

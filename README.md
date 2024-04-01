@@ -133,6 +133,37 @@ You are @filter('my.hook', 'awesome')
 
 ```
 
+### Helper functions
+
+Eventy also comes with a few helper functions to make it easier to work with actions and filters.
+
+```php
+// Add an action
+add_action('my.hook', function($user) {
+    if ($user->is_awesome) {
+         $this->doSomethingAwesome($user);
+    }
+}, 20, 1);
+```
+
+```php
+// Add a filter
+add_filter('my.hook', function($what) {
+    $what = 'not '. $what;
+    return $what;
+}, 20, 1);
+```
+
+```php
+// Fire an action
+do_action('my.hook', $user);
+```
+
+```php
+// Fire a filter
+apply_filters('my.hook', 'awesome');
+```
+
 ### Using it to enable extensibility
 
 Here's an example of how Eventy could be used in a real application where you have the concept of plugins.

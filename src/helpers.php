@@ -5,7 +5,7 @@ if (!function_exists('eventy')) {
     /**
      * Get the Eventy instance
      *
-     * @return TorMorten\Eventy\Facades\Events
+     * @return \TorMorten\Eventy\Events
      */
     function eventy()
     {
@@ -19,7 +19,7 @@ if (!function_exists('add_filter')) {
      * Add a filter to the Eventy instance
      *
      * @param string $hook
-     * @param callable $function
+     * @param callable $callback
      * @param int $priority
      * @param int $arguments
      *
@@ -56,7 +56,7 @@ if (!function_exists('add_action')) {
      * Add an action to the Eventy instance
      *
      * @param string $hook
-     * @param callable $function
+     * @param callable $callback
      * @param int $priority
      * @param int $arguments
      *

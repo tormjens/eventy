@@ -1,9 +1,8 @@
 <?php
 
 if (!function_exists('eventy')) {
-
     /**
-     * Get the Eventy instance
+     * Get the Eventy instance.
      *
      * @return \TorMorten\Eventy\Events
      */
@@ -14,14 +13,13 @@ if (!function_exists('eventy')) {
 }
 
 if (!function_exists('add_filter')) {
-
     /**
-     * Add a filter to the Eventy instance
+     * Add a filter to the Eventy instance.
      *
-     * @param string $hook
+     * @param string   $hook
      * @param callable $callback
-     * @param int $priority
-     * @param int $arguments
+     * @param int      $priority
+     * @param int      $arguments
      *
      * @return void
      */
@@ -31,15 +29,13 @@ if (!function_exists('add_filter')) {
     }
 }
 
-
 if (!function_exists('apply_filters')) {
-
     /**
-     * Apply filters to a value
+     * Apply filters to a value.
      *
      * @param string $action
-     * @param mixed $value
-     * @param mixed $parameters
+     * @param mixed  $value
+     * @param mixed  $parameters
      *
      * @return mixed
      */
@@ -49,16 +45,14 @@ if (!function_exists('apply_filters')) {
     }
 }
 
-
 if (!function_exists('add_action')) {
-
     /**
-     * Add an action to the Eventy instance
+     * Add an action to the Eventy instance.
      *
-     * @param string $hook
+     * @param string   $hook
      * @param callable $callback
-     * @param int $priority
-     * @param int $arguments
+     * @param int      $priority
+     * @param int      $arguments
      *
      * @return void
      */
@@ -69,12 +63,11 @@ if (!function_exists('add_action')) {
 }
 
 if (!function_exists('do_action')) {
-
     /**
-     * Execute the actions for the hook
+     * Execute the actions for the hook.
      *
      * @param string $hook
-     * @param mixed $parameters
+     * @param mixed  $parameters
      *
      * @return void
      */
